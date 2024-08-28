@@ -55,7 +55,7 @@ public class Fraction {
         return new Fraction(this.flag * f.dig, this.dig * f.flag);
     };
 
-    ///////////////////////////////////////
+    ///////////////////////////////////////     ////////////////////////
     // Статичні лямбда вирази
     public static final Function<Fraction, Double> decimal = f -> (double) f.flag / f.dig;
 
