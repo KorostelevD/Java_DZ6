@@ -55,15 +55,16 @@ public class Fraction {
         return new Fraction(this.flag * f.dig, this.dig * f.flag);
     };
 
+    ///////////////////////////////////////
     // Статичні лямбда вирази
     public static final Function<Fraction, Double> decimal = f -> (double) f.flag / f.dig;
 
-    public static final Function<String, Fraction> fromString = s -> {
+   /* public static final Function<String, Fraction> fromString = s -> {
         String[] parts = s.split("/");
         return new Fraction(Integer.parseInt(parts[0]), Integer.parseInt(parts[1]));
-    };
+    };*/
 
-    public static final BiPredicate<Fraction, Fraction> compareFractions = (f1, f2) -> f1.flag * f2.dig == f2.flag * f1.dig;
+    /*public static final BiPredicate<Fraction, Fraction> compareFractions = (f1, f2) -> f1.flag * f2.dig == f2.flag * f1.dig;
 
     public static final BinaryOperator<Fraction> multiplyFractions = (f1, f2) -> new Fraction(f1.flag * f2.flag, f1.dig * f2.dig);
 
@@ -73,6 +74,6 @@ public class Fraction {
         }
         return new Fraction(f1.flag * f2.dig, f1.dig * f2.flag);
     };
-
+*/
 
 }
