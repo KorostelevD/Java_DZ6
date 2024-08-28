@@ -1,6 +1,8 @@
 package pack;
 
 import static pack.Fraction.*;
+import java.util.function.Consumer;
+
 
 public class Main {
     public static void main(String[] args) {
@@ -25,13 +27,14 @@ public class Main {
         System.out.println();
 
 
-        // Статичне порівняння дробів
+        // Порівняння дробів
         System.out.println("Порівняння дробей");
         boolean isEqual = f1.compare.test(f2);
         System.out.println("f1 дорівнює f2: " + isEqual);
         System.out.println();
 
         // Множення дробів
+        System.out.println("Множення та ділення дробей");
         Fraction f3 = f1.multiply.apply(f2);
         System.out.println("F3 = f1 * f2 = " + f3.toStringFraction.get());
 
@@ -40,11 +43,6 @@ public class Main {
         System.out.println("F4 = f1 / f2 = " + f4.toStringFraction.get());
         System.out.println();
 
-
-        /*// Статичне перетворення рядка в дріб
-        Fraction f5 = fromString.apply("7/8");
-        System.out.println("Дріб з рядка: " + f5.toStringFraction.get());*/
-
         // Статичне перетворення дробу в десятковий формат
         double decimalValue3 = decimal.apply(f3);
         System.out.println("Десятковий формат F3: " + decimalValue3);
@@ -52,6 +50,27 @@ public class Main {
         // Статичне перетворення дробу в десятковий формат
         double decimalValue4 = decimal.apply(f4);
         System.out.println("Десятковий формат F4: " + decimalValue4);
+
+        System.out.println();
+        System.out.println("! СТАТИЧНІ ЛЯМДА ВИРАЗИ  !");
+        Fraction parsedFraction = Fraction.fromString.apply( "1/2");
+        System.out.println("Parsed Fraction: " + parsedFraction.toStringFraction.get());
+
+        System.out.println("Static Are Equal: " + Fraction.areEqual.test(f1, f2));
+
+        Fraction staticMultiply = multiply1.apply(f1, f2);
+        System.out.println("Static Multiply: " + staticMultiply.toStringFraction.get());
+
+        Fraction staticDivide = Fraction.divide1.apply(f1, f2);
+        System.out.println("Static Divide: " + staticDivide.toStringFraction.get());
+
+
+        // Створення посилання на метод Tools.print
+        Consumer<Object> printMethodRef = Tools::print;
+
+        // Виклик методу через посилання на метод
+        printMethodRef.accept("");
+        printMethodRef.accept("МЕТОД ДЛЯ ВИВОДУ В КОНСОЛЬ");
 
     }
 }

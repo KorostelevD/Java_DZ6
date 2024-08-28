@@ -59,21 +59,19 @@ public class Fraction {
     // Статичні лямбда вирази
     public static final Function<Fraction, Double> decimal = f -> (double) f.flag / f.dig;
 
-   /* public static final Function<String, Fraction> fromString = s -> {
+    // Перетворення рядку в дріб. Рядок має вигляд: "1/2".
+    public static final Function<String, Fraction> fromString = s -> {
         String[] parts = s.split("/");
         return new Fraction(Integer.parseInt(parts[0]), Integer.parseInt(parts[1]));
-    };*/
-
-    /*public static final BiPredicate<Fraction, Fraction> compareFractions = (f1, f2) -> f1.flag * f2.dig == f2.flag * f1.dig;
-
-    public static final BinaryOperator<Fraction> multiplyFractions = (f1, f2) -> new Fraction(f1.flag * f2.flag, f1.dig * f2.dig);
-
-    public static final BinaryOperator<Fraction> divideFractions = (f1, f2) -> {
-        if (f2.flag == 0) {
-            throw new IllegalArgumentException("Не можна ділити на дріб з чисельником 0.");
-        }
-        return new Fraction(f1.flag * f2.dig, f1.dig * f2.flag);
     };
-*/
+
+    // Порівняння двох дробів
+    public static final BiPredicate<Fraction, Fraction> areEqual = (f1, f2) -> (double) f1.flag / f1.dig == (double) f2.flag / f2.dig;
+
+    // Множення двох дробів
+    public static final BinaryOperator<Fraction> multiply1 = (f1, f2) -> new Fraction(f1.flag * f2.flag, f1.dig * f2.dig);
+
+    // Ділення двох дробів
+    public static final BinaryOperator<Fraction> divide1 = (f1, f2) -> new Fraction(f1.flag * f2.dig, f1.dig * f2.flag);
 
 }
